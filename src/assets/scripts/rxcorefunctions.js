@@ -13614,6 +13614,7 @@ function PointFromArcDist(x, y, xc, yc, radius, sang, sweep){
 
 
 
+
                     var localx = x;
                     var localy = y;
                     var CanvRotRad = DocObj.getCurrentpage().getpageRotation() * (Math.PI / 180);
@@ -22675,7 +22676,7 @@ function PointFromArcDist(x, y, xc, yc, radius, sang, sweep){
                         if (markupobject.type != 10) {
 
 
-                            if((markupobject.type == 11 || markupobject.type == 20) && markupobject.subtype == 3){
+                            if((markupobject.type == 11 || markupobject.type == 20) && (markupobject.subtype == 3 || markupobject.subtype == 5)){
                                 //draw rectangle around when selected
                                 ctx.lineWidth = 3;
                                 ctx.beginPath();
@@ -25012,7 +25013,7 @@ function PointFromArcDist(x, y, xc, yc, radius, sang, sweep){
 
                                     //custom image for print or export to pdf.
     
-                                }else if(this.subtype == 3){
+                                }else if(this.subtype == 3 || this.subtype == 5){
                                     //action button
                                     ctx.save();
                                     
@@ -25077,7 +25078,7 @@ function PointFromArcDist(x, y, xc, yc, radius, sang, sweep){
     
                                 //custom image for print or export to pdf.
 
-                            }else if(this.subtype == 3){ //action button
+                            }else if(this.subtype == 3 || this.subtype == 5){ //action button
 
                                 if (markupobject.selected) {
                                     markupobject.select(ctx, this.xscaled, this.yscaled, this.xscaled + this.wscaled, this.yscaled + this.hscaled, true, false);
@@ -94617,6 +94618,7 @@ function PointFromArcDist(x, y, xc, yc, radius, sang, sweep){
                 {label : "Symbol", typename : 'SYMBOL', type : 11, subtype : 1},
                 {label : "Button", typename : 'BUTTON', type : 11, subtype : 3},
                 {label : "Signature", typename : 'SIGNATURE', type : 11, subtype : 4},
+                {label : "Signature", typename : 'SIGNATUREMOVEABLE', type : 11, subtype : 5},
                 {label : "Stamp", typename : 'IMAGESTAMP', type : 11, subtype : 12},
                 {label : "link", typename : 'link', type :11 , subtype : 20},
                 {label : "interactiveStamp", typename : 'interactiveStamp', type : 11, subtype : 21},
@@ -94982,6 +94984,9 @@ function PointFromArcDist(x, y, xc, yc, radius, sang, sweep){
                 properties.rotate = true;
 
             }
+
+           
+
             //{label : "Button", typename : 'BUTTON', type : 11, subtype : 4},
             
             
